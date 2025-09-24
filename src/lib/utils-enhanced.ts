@@ -88,7 +88,7 @@ export const textUtils = {
           content: currentChunk.trim(),
           start: actualStart,
           end: actualStart + currentChunk.trim().length,
-          type: currentChunk.includes('\n\n') ? 'paragraph' : 'chunk'
+          type: currentChunk.includes('\n\n') ? 'paragraph' as const : 'chunk' as const
         })
         
         startPos = actualStart + currentChunk.trim().length
@@ -105,7 +105,7 @@ export const textUtils = {
         content: currentChunk.trim(),
         start: actualStart,
         end: actualStart + currentChunk.trim().length,
-        type: 'chunk'
+        type: 'chunk' as const
       })
     }
     
