@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Document Reader - Mobile Ready</title>
+  <style>
+    /* Critical mobile CSS */
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+    
+    /* Prevent horizontal scroll */
+    .container {
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Mobile-first responsive utility */
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+      
+      .mobile-full-width {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      
+      .mobile-text-sm {
+        font-size: 0.875rem !important;
+      }
+      
+      .mobile-p-2 {
+        padding: 0.5rem !important;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .mobile-only {
+        display: none !important;
+      }
+    }
+    
+    /* Touch-friendly buttons */
+    .touch-button {
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <!-- Your Next.js app will mount here -->
+  <div id="__next"></div>
+  
+  <script>
+    // Mobile detection and debugging
+    console.log('Screen width:', window.innerWidth);
+    console.log('Screen height:', window.innerHeight);
+    console.log('Device pixel ratio:', window.devicePixelRatio);
+    console.log('User agent:', navigator.userAgent);
+    
+    // Touch detection
+    if ('ontouchstart' in window) {
+      document.documentElement.classList.add('touch-device');
+      console.log('Touch device detected');
+    }
+    
+    // Viewport debugging
+    function logViewport() {
+      console.log('Viewport:', {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        devicePixelRatio: window.devicePixelRatio
+      });
+    }
+    
+    window.addEventListener('resize', logViewport);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(logViewport, 100);
+    });
+    
+    logViewport();
+  </script>
+</body>
+</html>
